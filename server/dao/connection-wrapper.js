@@ -1,5 +1,5 @@
 const mysql = require('mysql2');
-const TWENTYTHREEHOURS = 82800000;
+const TWENTYFOURHOURS = 1000 * 60 * 60 * 24;
 
 // Connection = קו תקשורת למסד הנתונים
 const connection = mysql.createConnection({
@@ -10,8 +10,7 @@ const connection = mysql.createConnection({
     dateStrings: "date"
 });
 
-// refresh connection to DB every 23 hours;
-
+// refresh connection to DB every 24 hours;
 function connectToDB() {
     // Connect to the database: 
     connection.connect(err => {
@@ -21,7 +20,7 @@ function connectToDB() {
         }
         console.log("We're connected to MySQL");
     });
-    setTimeout(connectToDB(), TWENTYTHREEHOURS);
+    setTimeout(connectToDB(), TWENTYFOURHOURS);
 }
 connectToDB();
 
