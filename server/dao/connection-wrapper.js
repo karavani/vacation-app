@@ -11,7 +11,8 @@ const connection = mysql.createConnection({
 });
 
 // refresh connection to DB every 23 hours;
-setInterval(() => {
+
+function connectToDB() {
     // Connect to the database: 
     connection.connect(err => {
         if (err) {
@@ -20,8 +21,9 @@ setInterval(() => {
         }
         console.log("We're connected to MySQL");
     });
-}, TWENTYTHREEHOURS)
-
+    setTimeout(connectToDB(), TWENTYTHREEHOURS);
+}
+connectToDB();
 
 // One function for executing select / insert / update / delete: 
 function execute(sql) {
