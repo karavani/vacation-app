@@ -1,0 +1,50 @@
+.register > input {
+    width: 250px;
+    margin: 10px;
+    padding : 10px;   
+    outline: none; 
+	background-color: #fff;
+	background-clip: padding-box;
+    border: 1px solid #ced4da;
+	border-radius: .25rem;
+    /* Round corners button */
+    border-radius: 25px;
+}
+#confirmPassword{
+    opacity: 20%;
+}
+#user-tie{
+font-size: 72px;
+}
+.register > input:hover{
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    outline: none;
+}
+.register > input[type='button']:hover{
+cursor: pointer;
+}
+/* .login>div{        
+    margin: auto;    
+    display: block;  
+} */
+.registerSection{
+    margin: 15px;
+}
+#registerBtn{
+	background-color: transparent;
+	border: none;
+  	color: blue;
+	outline: none;
+}
+#registerBtn:hover{
+cursor: pointer;
+outline: none;
+}
+h4 {
+    display: block;
+    margin-block-start: 1.33em;
+    margin-block-end: 1.33em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}

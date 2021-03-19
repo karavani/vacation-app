@@ -1,0 +1,111 @@
+.section-vacationCards{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap; 
+    align-items: center;
+    padding: 10px;
+    justify-content: center;
+    background-color: white;
+}
+.vacation{
+    display: relative;
+    background-color: white;
+    color: black;
+    padding: 2px;
+    margin: 10px;
+    width: 350px;
+    height: 580px;
+    border: gainsboro solid 1px;
+    border-radius: 4px;
+    animation: fadein 1s;
+    box-shadow: 10px 10px 5px #999999;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+
+.descriptionVacation{
+  padding: 5px;
+  margin: 5px;
+  width: 320px;
+  height: 130px;
+  overflow: auto;
+  word-wrap: break-word;
+  overflow-x: hidden;
+  white-space: pre-wrap;
+}
+
+.datesVacation{
+  padding: 5px;
+  margin: 5px;
+  border-top: gainsboro solid 1px;
+}
+
+.vacation > h2{
+color: #48dbfb;
+font-weight: bold;
+padding: 5px;
+}
+.vacation > p{
+margin: 1px;
+}
+.vacation > h5 {
+  justify-content: flex-end;
+}
+.like-button {
+    display: none;
+  }
+  
+  .like-icon {
+    padding: 2px;
+    margin: 0px;
+    cursor: pointer;
+    text-align: right;
+    transform: translateY(-405px);
+    display: block;
+
+  }
+  
+  .str0 {
+    stroke:#0f0f0f;
+  }
+  
+  .fil0 {
+    transition: all .2s ease-out;
+    fill: #ffffff94;
+  }
+  
+  .like-button:checked+svg .fil0 {
+    fill: #48dbfb;
+  }
+  .like-button:hover+svg .fil0 {
+    transition: all .3s ease-in;
+    fill: #48dbfb;
+  }
+  .followers{
+    transform: translateY(-458px);
+    background-color: rgba(0, 0, 0, 0.479);
+    color: white;
+    display: block;
+    width: 100px;
+    padding-top: 1px;
+    height: 10px;
+    border-radius: 0px 40px 40px 0px;
+    margin: 0px;
+    z-index: 2;
+  }
+
+  @keyframes fadein {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(185, 180, 180, 0.699);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.4);
+}

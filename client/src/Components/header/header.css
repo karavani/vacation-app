@@ -1,0 +1,181 @@
+
+.navbar{
+    position: fixed;
+    background-color: transparent;
+    width: 100%;
+    padding: 30px 0;
+    top: 0;
+    z-index: 999;
+    transition: .3s linear;
+  }
+  
+  .inner-width{
+    max-width: 1300px;
+    margin: auto;
+    padding: 0 40px;
+  }
+  
+  .navbar .inner-width{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .logo{
+    /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+    width: 120px;
+    height: 40px;
+    background-color: transparent;
+    border-radius: 6px;
+    border: 1px  solid #48dbfb;
+    color: #48dbfb;
+    outline: none;
+    transition: .2s linear;
+    padding-top: 6px;
+    font-size: 17px;
+    font-weight: 500;
+  }
+  .logo:hover{
+    background-color: #48dbfb;
+    color: white;
+  }
+  
+
+  .navbar-menu a{
+    color: rgb(8, 8, 8);
+    font-size: 15px;
+    font-weight: 500;
+    margin-left: 30px;
+    transition: .2s linear;
+  }
+  
+  .navbar-menu a:hover{
+    color: #48dbfb !important;
+  }
+  
+  .sticky{
+    background-color: #fff;
+    padding: 18px 0;
+  }
+  
+  .sticky .logo{
+    background-image: url("https://s.abcnews.com/images/GMA/airplane-vacation-gty-er-190402_hpMain_16x9t_1600.jpg");
+  }
+  
+  .sticky .navbar-menu a{
+    color: #111;
+  }
+  
+  .sticky .menu-toggler span{
+    background-color: #111;
+  }
+  #header{
+    width: 100%;
+    height: auto;
+    min-height: 500px;
+    background: url("https://images.unsplash.com/photo-1566371486490-560ded23b5e4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80") no-repeat center;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+  
+  #header .inner-width{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+  }
+  
+  #header .content{
+    width: 100%;
+    color: #fff;
+  }
+  
+  #header .content h1{
+    font-size: 60px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+  }
+  
+  #header .content h1::after{
+    content: "South Africa";
+    animation: textanim 10s linear infinite;
+  }
+  
+  @keyframes textanim{
+    25%{
+      content: "South America";
+    }
+    50%{
+      content: "Asia";
+    }
+    75%{
+      content: "Europe";
+    }
+  }
+  
+  .sm a{
+    color: #fff;
+    font-size: 22px;
+    margin: 0 10px;
+    transition: .2s linear;
+  }
+  
+  .sm a:hover{
+    color: #48dbfb;
+  }
+  
+  #header .buttons{
+    margin-top: 60px;
+  }
+  
+  #header .buttons a{
+    display: inline-block;
+    margin: 15px 30px;
+    color: #48dbfb;
+    font-size: 15px;
+    font-weight: 500;
+    width: 180px;
+    border: 1px solid #48dbfb;
+    padding: 14px 0;
+    border-radius: 6px;
+    transition: .2s linear;
+  }
+  
+  #header .buttons a:hover,
+  #header .buttons a:nth-child(2)
+  {
+    background-color: #48dbfb;
+    color: #fff;
+  }
+  
+  
+  @media screen and (max-width: 980px){
+
+  
+    .navbar-menu{
+      position: fixed;
+      height: 100vh;
+      width: 100%;
+      background-color: #353b48;
+      top: 0;
+      right: -100%;
+      max-width: 400px;
+      padding: 80px 50px;
+      transition: .3s linear;
+    }
+  
+    .navbar-menu a{
+      display: block;
+      font-size: 30px;
+      margin: 30px 0;
+    }
+  
+    .sticky .navbar-menu{
+      background-color: #f1f1f1;
+    }
+    
+    .navbar-menu.active{
+      right: 0;
+    }
+  }

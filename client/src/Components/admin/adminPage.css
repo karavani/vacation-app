@@ -1,0 +1,63 @@
+.VacationBtnsSection{
+  width: 100%;
+}
+.addVacationBtnDiv{
+    display: inline-block;
+    margin: 5px;
+    
+}
+
+.addVacationBtn:link, .addVacationBtn:visited {
+    background-color: #48dbfb;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 6px;
+    display: inline-block;
+  }
+  
+ .addVacationBtn:hover, .addVacationBtn:active {
+    background-color: #46adc4;
+    transition: .2s linear;
+
+  }
+
+  .fa-edit{
+        display: inline-block;
+        transform: translateX(80px); 
+        padding: 2px;
+        transform: translateY(-2px);
+        margin: 5px;
+        color: rgba(0, 0, 0, 0.514);
+  }
+  .fa-trash-alt{
+    display: inline-block;
+    transform: translateX(-80px);   
+    transform: translateY(-3px);
+    padding: 2px;
+    margin: 0px;
+    color: rgba(0, 0, 0, 0.514);
+  }
+  .fa-trash-alt:hover{
+      cursor: pointer;
+    color: black;
+
+  }
+  .fa-edit:hover{
+    cursor: pointer;
+    color: black;
+    transition: .2s linear;
+
+}
+.section-vacationCards > h2{
+  margin: none;
+}
+.destination{
+  display: inline-block;
+}
+
+.imageEditSection{
+  max-width: 300px;
+  display: block;
+}
