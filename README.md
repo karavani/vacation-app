@@ -1,8 +1,5 @@
 # vacation-app
 
-Link to production > 
-http://35.239.233.246:3001/
-
 An end-to-end project that includes:
 
 Frontend:
