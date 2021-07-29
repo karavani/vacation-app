@@ -5,11 +5,10 @@ const cache = require("./cache-controller");
 router.use(express.json());
 
 
-
 // DELETE vacation by id
 router.delete("/:id", async (request, response, next) => {
     // Extracting the JSON from the packet's BODY
-    let id = request.params.id;
+    const id = request.params.id;
     try {
         await vacationsLogic.deleteVacation(id);
         response.json();
@@ -24,7 +23,7 @@ router.delete("/:id", async (request, response, next) => {
 router.post("/", async (request, response, next) => {
 
     // Extracting the JSON from the packet's BODY
-    let newVacationDetails = request.body;
+    const newVacationDetails = request.body;
     try {
         await vacationsLogic.addVacation(newVacationDetails);
         response.json();
@@ -38,9 +37,9 @@ router.post("/", async (request, response, next) => {
 //<--- GET all vacations to user by followed and unfollowed vacations ---> 
 // GET http://localhost:3001/vacations/
 router.get("/", async (request, response, next) => {
-    let userData = cache.extractUserDataFromCache(request);
+    const userData = cache.extractUserDataFromCache(request);
     try {
-        let vacations = await vacationsLogic.getAllVacationsToUser(userData);
+        const vacations = await vacationsLogic.getAllVacationsToUser(userData);
         response.json(vacations)
     }
     catch (error) {
@@ -55,7 +54,7 @@ router.get("/", async (request, response, next) => {
 router.put("/", async (request, response, next) => {
 
     // Extracting the JSON from the packet's BODY
-    let vacation = request.body;
+    const vacation = request.body;
     try {
         await vacationsLogic.updateVacation(vacation);
         response.json()
@@ -70,9 +69,9 @@ router.put("/", async (request, response, next) => {
 // GET http://localhost:3001/vacations/:id
 router.get("/:id", async (request, response, next) => {
 
-    let id = request.params.id;
+    const id = request.params.id;
     try {
-        let vacation = await vacationsLogic.getVacationById(id);
+        const vacation = await vacationsLogic.getVacationById(id);
         response.json(vacation)
     }
     catch (error) {
@@ -80,7 +79,6 @@ router.get("/:id", async (request, response, next) => {
     }
 
 });
-
 
 
 module.exports = router;

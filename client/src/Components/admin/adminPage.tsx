@@ -42,7 +42,7 @@ export default class adminPage extends Component<any, VacationState> {
         }
     }
     private deleteVacation = async (args: any) => {
-        let vacationID = +args.target.id;
+        const vacationID = +args.target.id;
         try {
             await axios.delete("http://35.239.233.246:3001/vacations/" + vacationID);
         }
@@ -52,7 +52,7 @@ export default class adminPage extends Component<any, VacationState> {
     }
 
     private editVacation = async (args: any) => {
-        let vacationID = +args.target.id;
+        const vacationID = +args.target.id;
         store.dispatch({ type: ActionType.SendVacationId, payload: vacationID });
         this.props.history.push("/admin/edit");
     }

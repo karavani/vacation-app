@@ -22,11 +22,11 @@ export default class Reports extends Component<any, ChartState> {
             const res = await axios.get("http://35.239.233.246:3001/users/");
             const labels = [];
             const data = [];
-            for(let i=0; i < res.data.length; i++){
-                labels.push(JSON.stringify(res.data[i].vacationId)+"#: "+res.data[i].destination);
+            for (let i = 0; i < res.data.length; i++) {
+                labels.push(JSON.stringify(res.data[i].vacationId) + "#: " + res.data[i].destination);
                 data.push(res.data[i].followers);
             }
-            this.setState({ labels: labels, data: data});
+            this.setState({ labels: labels, data: data });
         }
         catch (e) {
             alert(e.response.data.error);

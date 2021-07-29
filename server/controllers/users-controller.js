@@ -13,9 +13,9 @@ server.use(express.json());
 server.post("/login", async (request, response, next) => {
 
     // Extracting the JSON from the packet's BODY
-    let userLoginDetails = request.body;
+    const userLoginDetails = request.body;
     try {
-        let successfullLoginData = await usersLogic.login(userLoginDetails);
+        const successfullLoginData = await usersLogic.login(userLoginDetails);
         response.json(successfullLoginData);
     }
     catch (error) {
@@ -28,9 +28,9 @@ server.post("/login", async (request, response, next) => {
 server.post("/", async (request, response, next) => {
 
     // Extracting the JSON from the packet's BODY
-    let newUserDetails = request.body;
+    const newUserDetails = request.body;
     try {
-        let successfullLoginData = await usersLogic.addUser(newUserDetails);
+        const successfullLoginData = await usersLogic.addUser(newUserDetails);
         response.json(successfullLoginData);
     }
     catch (error) {
@@ -59,8 +59,8 @@ server.get("/", async (request, response, next) => {
 server.post("/follow", async (request, response, next) => {
 
     // Extracting the JSON from the packet's BODY
-    let vacationId = request.body.vacationId;
-    let userId = cache.extractUserDataFromCache(request).id;
+    const vacationId = request.body.vacationId;
+    const userId = cache.extractUserDataFromCache(request).id;
     try {
         await usersLogic.followVacation(vacationId, userId);
         response.json();
@@ -75,8 +75,8 @@ server.post("/follow", async (request, response, next) => {
 // DELETE follower http://localhost:3001/users/follow/:id
 server.delete("/follow/:id", async (request, response, next) => {
 
-    let vacationId = request.params.id;
-    let userId = cache.extractUserDataFromCache(request).id;
+    const vacationId = request.params.id;
+    const userId = cache.extractUserDataFromCache(request).id;
     try {
         await usersLogic.unfollowVacation(vacationId, userId);
         response.json();
@@ -87,8 +87,6 @@ server.delete("/follow/:id", async (request, response, next) => {
 
 
 });
-
-
 
 
 module.exports = server;

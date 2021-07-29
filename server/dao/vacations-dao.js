@@ -1,14 +1,14 @@
 const connection = require("./connection-wrapper");
-let ErrorType = require("./../errors/error-type");
-let ServerError = require("./../errors/server-error");
+const ErrorType = require("./../errors/error-type");
+const ServerError = require("./../errors/server-error");
 
 
 
 async function addVacation(vacation) {
     const start = vacation.startDate.split("T");
     const end = vacation.endDate.split("T");
-    let sql = "INSERT INTO vacations (destination, start_date, end_date, description, price, image_url)  values(?, ?, ?, ?, ?, ?)";
-    let parameters = [vacation.destination, start[0], end[0], vacation.description,
+    const sql = "INSERT INTO vacations (destination, start_date, end_date, description, price, image_url)  values(?, ?, ?, ?, ?, ?)";
+    const parameters = [vacation.destination, start[0], end[0], vacation.description,
     vacation.price, vacation.imageUrl];
     try {
         await connection.executeWithParameters(sql, parameters);
@@ -21,7 +21,7 @@ async function addVacation(vacation) {
 // <-------------GET ALL VACATIONS TO USER BY FOLLOWED AND UNFOLLOWED VACATIONS----->
 
 async function getAllVacationsToUser(userId) {
-    let sql = `SELECT 
+    const sql = `SELECT 
     v.id,
     v.destination,
     v.description,
@@ -52,9 +52,9 @@ FROM
     FROM
         followed_vacations
     GROUP BY vacation_id) f_v ON v.id = f_v.vacation_id`;
-    let parameters = [userId];
+    const parameters = [userId];
     try {
-        let vacations = await connection.executeWithParameters(sql, parameters);
+        const vacations = await connection.executeWithParameters(sql, parameters);
         return vacations;
     }
     catch (e) {
@@ -67,7 +67,7 @@ FROM
 
 async function getVacationById(id) {
     try {
-        let sql = `SELECT 
+        const sql = `SELECT 
                         destination,
                         start_date as startDate,
                         end_date as endDate,
@@ -78,7 +78,7 @@ async function getVacationById(id) {
                         vacations
                     WHERE 
                         id = ?`;
-        let parameters = [id];
+        const parameters = [id];
         return await connection.executeWithParameters(sql, parameters);
     }
     catch (e) {
@@ -89,7 +89,7 @@ async function getVacationById(id) {
 async function updateVacation(vacation) {
     const start = vacation.startDate.split("T");
     const end = vacation.endDate.split("T");
-    let sql = `UPDATE vacations 
+    const sql = `UPDATE vacations 
                 SET 
                     destination = ?,
                     start_date = ?,
@@ -99,7 +99,7 @@ async function updateVacation(vacation) {
                     image_url = ?
                 WHERE
                     id = ?`;
-    let parameters = [vacation.destination, start[0], end[0], vacation.description,
+    const parameters = [vacation.destination, start[0], end[0], vacation.description,
     vacation.price, vacation.imageUrl, vacation.id];
     try {
         await connection.executeWithParameters(sql, parameters);
@@ -110,8 +110,8 @@ async function updateVacation(vacation) {
 }
 
 async function deleteVacationFromFollowers(id) {
-    let sql = "DELETE from followed_vacations where vacation_id = ?";
-    let parameters = [id];
+    const sql = "DELETE from followed_vacations where vacation_id = ?";
+    const parameters = [id];
     try {
         await connection.executeWithParameters(sql, parameters);
     }
@@ -121,8 +121,8 @@ async function deleteVacationFromFollowers(id) {
 }
 
 async function deleteVacation(id) {
-    let sql = "DELETE from vacations where id = ?";
-    let parameters = [id];
+    const sql = "DELETE from vacations where id = ?";
+    const parameters = [id];
     try {
         await connection.executeWithParameters(sql, parameters);
     }
@@ -132,7 +132,7 @@ async function deleteVacation(id) {
 }
 
 async function isVacationExist(vacation) {
-    let sql =
+    const sql =
         `SELECT 
         destination, start_date, end_date
     FROM
@@ -140,8 +140,8 @@ async function isVacationExist(vacation) {
     WHERE
         destination = ? AND start_date = ?
             AND end_date = ?;`;
-    let parameters = [vacation.destination, vacation.startDate, vacation.endDate]
-    let vacationExistsOnDb = await connection.executeWithParameters(sql, parameters);
+    const parameters = [vacation.destination, vacation.startDate, vacation.endDate]
+    const vacationExistsOnDb = await connection.executeWithParameters(sql, parameters);
     if (vacationExistsOnDb == null || vacationExistsOnDb.length == 0) {
         return false;
     }

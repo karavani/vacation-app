@@ -31,7 +31,7 @@ export default class vacation extends Component<any, VacationState>{
     }
 
     private getAllVacations = async () => {
-        let token = sessionStorage.getItem("userToken");
+        const token = sessionStorage.getItem("userToken");
         axios.defaults.headers.common["authorization"] = token;
         try {
             await axios.get("http://35.239.233.246:3001/vacations/").then((res) => {
@@ -43,9 +43,9 @@ export default class vacation extends Component<any, VacationState>{
         }
     }
     private setFollow = async (args: ChangeEvent<HTMLInputElement>) => {
-        let vacationId = +args.target.id;
+        const vacationId = +args.target.id;
 
-        let vacations = [...this.state.vacations];
+        const vacations = [...this.state.vacations];
 
         vacations.forEach((vacation) => {
             if (vacationId === vacation.id) {
@@ -94,7 +94,7 @@ export default class vacation extends Component<any, VacationState>{
                         <h2>{vacation.destination}</h2>
                         <div className="datesVacation">
                             <p>{vacation.startDate} -
-                        {vacation.endDate}
+                                {vacation.endDate}
                             </p></div>
                         <div className="descriptionVacation">
                             <p>{vacation.description}</p></div>

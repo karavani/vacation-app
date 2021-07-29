@@ -1,11 +1,11 @@
 const connection = require("./connection-wrapper");
-let ErrorType = require("./../errors/error-type");
-let ServerError = require("./../errors/server-error");
+const ErrorType = require("./../errors/error-type");
+const ServerError = require("./../errors/server-error");
 
 async function login(user) {
-    let sql = "SELECT id, username as userName, password, email, user_type as userType FROM users where username =? and password =?";
+    const sql = "SELECT id, username as userName, password, email, user_type as userType FROM users where username =? and password =?";
 
-    let parameters = [user.userName, user.password];
+    const parameters = [user.userName, user.password];
 
     let usersLoginResult;
     try {
@@ -24,8 +24,8 @@ async function login(user) {
 }
 
 async function addUser(user) {
-    let sql = "INSERT INTO users (username, password, email) values(?, ?, ?)";
-    let parameters = [user.userName, user.password, user.eMail];
+    const sql = "INSERT INTO users (username, password, email) values(?, ?, ?)";
+    const parameters = [user.userName, user.password, user.eMail];
     try {
         await connection.executeWithParameters(sql, parameters);
     }
@@ -35,10 +35,10 @@ async function addUser(user) {
 }
 
 async function isUserExistByName(name) {
-    let sql = "SELECT username FROM users where username = ? ";
-    let parameters = [name]
+    const sql = "SELECT username FROM users where username = ? ";
+    const parameters = [name]
     try {
-        let isUserNameExists = await connection.executeWithParameters(sql, parameters);
+        const isUserNameExists = await connection.executeWithParameters(sql, parameters);
         if (isUserNameExists == null || isUserNameExists.length == 0) {
             return false;
         }
@@ -50,8 +50,8 @@ async function isUserExistByName(name) {
 }
 
 async function followVacation(vacationId, userId) {
-    let sql = "INSERT INTO followed_vacations (vacation_id, user_id) values (?,?)";
-    let parameters = [vacationId, userId];
+    const sql = "INSERT INTO followed_vacations (vacation_id, user_id) values (?,?)";
+    const parameters = [vacationId, userId];
     try {
         await connection.executeWithParameters(sql, parameters);
     }
@@ -61,8 +61,8 @@ async function followVacation(vacationId, userId) {
 }
 
 async function unfollowVacation(vacationId, userId) {
-    let sql = "DELETE from followed_vacations WHERE vacation_id = ? and user_id = ?";
-    let parameters = [vacationId, userId];
+    const sql = "DELETE from followed_vacations WHERE vacation_id = ? and user_id = ?";
+    const parameters = [vacationId, userId];
     try {
         await connection.executeWithParameters(sql, parameters);
     }
@@ -72,7 +72,7 @@ async function unfollowVacation(vacationId, userId) {
 }
 
 async function getChartData() {
-    let sql = `SELECT 
+    const sql = `SELECT 
                    vacation_id AS vacationId,
                    destination,
                    COUNT(vacation_id) AS 'followers'

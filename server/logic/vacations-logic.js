@@ -1,6 +1,6 @@
 const vacationsDao = require('../dao/vacations-dao');
-let ErrorType = require("./../errors/error-type");
-let ServerError = require("./../errors/server-error");
+const ErrorType = require("./../errors/error-type");
+const ServerError = require("./../errors/server-error");
 const pushService = require("../services/pushService");
 
 
@@ -14,13 +14,13 @@ async function addVacation(vacation) {
 }
 
 async function getAllVacationsToUser(userData) {
-    let userId = userData.id;
-    let vacations = await vacationsDao.getAllVacationsToUser(userId);
+    const userId = userData.id;
+    const vacations = await vacationsDao.getAllVacationsToUser(userId);
     return vacations;
 }
 
 async function getVacationById(id) {
-    let vacations = await vacationsDao.getVacationById(id);
+    const vacations = await vacationsDao.getVacationById(id);
     return vacations;
 }
 

@@ -27,34 +27,34 @@ export default class addVacation extends Component<any, addVacationInterface> {
     }
 
     private setDestination = (args: ChangeEvent<HTMLInputElement>) => {
-        let destination = args.target.value;
+        const destination = args.target.value;
         this.setState({ destination })
     }
 
     private setDescription = (args: ChangeEvent<HTMLInputElement>) => {
-        let description = args.target.value;
+        const description = args.target.value;
         this.setState({ description })
     }
 
     private setStartDate = (args: ChangeEvent<HTMLInputElement>) => {
-        let startDate = new Date(args.target.value);
+        const startDate = new Date(args.target.value);
         this.setState({ startDate })
     }
     private setEndDate = (args: ChangeEvent<HTMLInputElement>) => {
-        let endDate = new Date(args.target.value);
+        const endDate = new Date(args.target.value);
         this.setState({ endDate })
     }
     private setPrice = (args: ChangeEvent<HTMLInputElement>) => {
-        let price = +args.target.value;
+        const price = +args.target.value;
         this.setState({ price })
     }
     private setImageUrl = (args: ChangeEvent<HTMLInputElement>) => {
-        let imageUrl = args.target.value;
+        const imageUrl = args.target.value;
         this.setState({ imageUrl })
     }
     private addVacation = async (e: any) => {
             e.preventDefault();
-            let vacation = new Vacation(this.state.destination, this.state.description, this.state.startDate, this.state.endDate
+            const vacation = new Vacation(this.state.destination, this.state.description, this.state.startDate, this.state.endDate
                 , this.state.price, this.state.imageUrl);
             try {
                 await axios.post('http://35.239.233.246:3001/vacations/', vacation).then(() => {

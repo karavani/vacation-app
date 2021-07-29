@@ -4,9 +4,9 @@ function put(key, value) {
     cache.set(key, value);
 }
 function extractUserDataFromCache(request){
-    let authorizationString = request.headers["authorization"];
-    let token = authorizationString.substring("Bearer ".length);
-    let userData = cache.get(token);
+    const authorizationString = request.headers["authorization"];
+    const token = authorizationString.substring("Bearer ".length);
+    const userData = cache.get(token);
     return userData;
 }
 

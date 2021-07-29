@@ -58,7 +58,7 @@ export default class Register extends Component<any, RegisterState> {
            alert('error invalid password');
         }
         else {
-            let userRegisterDetails = new newUserDetails(this.state.userName, this.state.password, this.state.eMail);
+            const userRegisterDetails = new newUserDetails(this.state.userName, this.state.password, this.state.eMail);
             try {
                 const response = await axios.post("http://35.239.233.246:3001/users/", userRegisterDetails);
                 // creating an object with the data from the server that we requested

@@ -40,7 +40,7 @@ export default class Login extends Component<any, LoginState> {
     private login = async () => {
         try {
             // creating an object to send to the server
-            let userLoginDetails = new UserLoginDetails(this.state.userName, this.state.password);
+            const userLoginDetails = new UserLoginDetails(this.state.userName, this.state.password);
 
             // sending the async requste to the server
             const response = await axios.post<SuccessfulLoginServerResponse>("http://35.239.233.246:3001/users/login", userLoginDetails);

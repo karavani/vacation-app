@@ -9,20 +9,20 @@ const io = require("socket.io")(http, {
 });
 const cache = require('../controllers/cache-controller');
 
-let userIdToSocketsMap = new Map();
+const userIdToSocketsMap = new Map();
 
 io.on("connection", socket => {
-    let handshakeData = socket.request;
-    let token = handshakeData._query['userToken'].substring("Bearer ".length);
-    let userData = cache.get(token);
+    const handshakeData = socket.request;
+    const token = handshakeData._query['userToken'].substring("Bearer ".length);
+    const userData = cache.get(token);
     userIdToSocketsMap.set(userData.id, socket);
 
     socket.on("disconnect", () => {
 
         var handshakeData = socket.request;
-        let token = handshakeData._query['userToken'].substring("Bearer ".length);
-        let userData = cache.get(token);
-        let userId = userData.id;
+        const token = handshakeData._query['userToken'].substring("Bearer ".length);
+        const userData = cache.get(token);
+        const userId = userData.id;
 
         if (!userId) {
             return;
@@ -33,7 +33,7 @@ io.on("connection", socket => {
 
 async function broadcast(event) {
     for (const [userId, socket] of userIdToSocketsMap.entries()) {
-        let vacations = await vacationsDao.getAllVacationsToUser(userId);
+        const vacations = await vacationsDao.getAllVacationsToUser(userId);
         socket.emit(event, vacations);
     }
 }
